@@ -113,9 +113,9 @@ app.get("/free-endpoint", (request, response) => {
 });
 
 app.get("/auth-endpoint", auth, (request, response) => {
-  User.findOne({ email: response.body.email })
+  User.find()
     .then((email) => {
-      response.json({ message: "You are authorized to access me", email: user.email });
+      response.status(200).send({ message: "You are authorized to access me", email: user.email });
     })
     .catch((e) => {
       response.status(404).send({
