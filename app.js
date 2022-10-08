@@ -108,11 +108,21 @@ app.post("/login", (request, response) => {
 });
 
 app.get("/free-endpoint", (request, response) => {
+
   response.json({ message: "You are free to access me anytime" });
 });
 
 app.get("/auth-endpoint", auth, (request, response) => {
-  response.json({ message: "You are authorized to access me" });
+  User.findOne({ email: response.body.email })
+    .then((email) => {
+      response.json({ message: "You are authorized to access me", email: user.email });
+    })
+    .catch((e) => {
+      response.status(404).send({
+        message: "You are free to access ",
+        e,
+      });
+    })
 });
 
 
