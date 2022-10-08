@@ -119,7 +119,7 @@ app.get("/auth-endpoint", auth, (request, response) => {
     })
     .catch((e) => {
       response.status(404).send({
-        message: "You are free to access ",
+        message: "You are not able to access",
         e,
       });
     })
