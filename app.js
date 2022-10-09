@@ -48,8 +48,8 @@ app.post("/register", (request, response) => {
         })
 
         .catch((error) => {
-          response.status(500).send({
-            message: "Error creating user",
+          response.status(400).send({
+            message: "Allready register using this Email",
             error,
           });
         });
