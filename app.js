@@ -90,6 +90,7 @@ app.post("/login", (request, response) => {
             message: "Login Successful",
             email: user.email,
             token,
+            penColor: user.penColor,
           });
         })
         .catch((error) => {
